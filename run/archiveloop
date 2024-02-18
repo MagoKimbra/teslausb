@@ -835,7 +835,7 @@ do
 
   /root/bin/awake_start || true
 
-  sleep "${ARCHIVE_DELAY:-20}"
+  sleep "${ARCHIVE_DELAY:-5}"
 
   # Check if sentry was triggered by an event.
   /root/bin/check_sentry || true
