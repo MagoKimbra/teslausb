@@ -837,6 +837,9 @@ do
 
   sleep "${ARCHIVE_DELAY:-20}"
 
+  # Check if sentry was triggered by an event.
+  /root/bin/check_sentry || true
+
   # take a snapshot before archive_clips starts deleting files
   /root/bin/make_snapshot.sh
 
