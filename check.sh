@@ -11,6 +11,7 @@ shellcheck --exclude=SC1091 \
            ./pi-gen-sources/00-teslausb-tweaks/files/rc.local \
            ./run/archiveloop \
            ./run/auto.teslausb \
+           ./run/check_sentry \
            ./run/awake_start \
            ./run/awake_stop \
            ./run/mountimage \
