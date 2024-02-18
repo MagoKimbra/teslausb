@@ -6,15 +6,16 @@ then
   exit
 fi
 
-case "${TESLA_SENTRY_MODE:-off}" in
+case "${TESLA_SENTRY_CECK:-off}" in
   on)
-    is_sentry_activate=$(/root/bin/tesla_api.py is_sentry_activate | tr '[:upper:]' '[:lower:]')
+    is_sentry_ceck=$(/root/bin/tesla_api.py is_sentry_ceck | tr '[:upper:]' '[:lower:]')
     if [ "0" = "${is_sentry_activate}" ]
     then
       log "Sentry was triggered by an event."
     fi
     ;;
   off)
+    log "Sentry ceck is disactive."
     ;;
   *)
     log "Unknown TESLA_SENTRY_MODE: ${TESLA_SENTRY_MODE}."
