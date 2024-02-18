@@ -361,6 +361,10 @@ def is_sentry_mode_enabled():
     return data['response']['sentry_mode']
 
 
+def is_sentry_activate():
+    data = get_vehicle_state()
+    return data['response']['center_display_state']
+
 '''
 This accesses the streaming endpoint, but doesn't
 stick around to wait for continuous results.
