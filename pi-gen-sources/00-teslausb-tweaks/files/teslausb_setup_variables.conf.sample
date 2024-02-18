@@ -309,6 +309,10 @@ export WIFIPASS='your_pass'
 # on Sentry mode while archiving.
 # export TESLA_WAKE_MODE=stream
 
+# TESLA API
+# If you want to be notified if there has been a sentry event.
+export TESLA_SENTRY_MODE=on
+
 # Uncomment if you want to increase the size of the root
 # filesystem so there's extra space for installing additional
 # software. This only works if the backing store partition hasn't
