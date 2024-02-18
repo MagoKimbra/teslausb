@@ -311,7 +311,7 @@ export WIFIPASS='your_pass'
 
 # TESLA API
 # If you want to be notified if there has been a sentry event.
-export TESLA_SENTRY_MODE=on
+export TESLA_SENTRY_CHECK=on
 
 # Uncomment if you want to increase the size of the root
 # filesystem so there's extra space for installing additional
