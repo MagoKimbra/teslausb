@@ -361,7 +361,7 @@ def is_sentry_mode_enabled():
     return data['response']['sentry_mode']
 
 
-def is_sentry_ceck():
+def get_sentry_check():
     data = get_vehicle_state()
     return data['response']['center_display_state']
 
