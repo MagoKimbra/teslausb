@@ -823,8 +823,7 @@ else
   connect_usb_drives_to_host
 fi
 
-
-if [[ ( -n "$TESLA_SENTRY_CHECK" ) ]]
+if [[ ( -n "${TESLA_SENTRY_CHECK:+x}" ) ]]
 then
 
   # Check sentry
