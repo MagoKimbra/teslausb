@@ -2,22 +2,12 @@
 
 if [[ ( ( ! -x /root/bin/tesla_api.py) || ( ! -s /mutable/cache.json ) ) && ( -z "${TESLAFI_API_TOKEN:+x}" ) ]]
 then
-  log "Not keeping car awake."
+  log "No api Token."
   exit
 fi
 
-case "${TESLA_SENTRY_CHECK:-off}" in
-  on)
-    get_sentry_check=$(/root/bin/tesla_api.py get_sentry_check | tr '[:upper:]' '[:lower:]')
-    if [ "0" = "${get_sentry_check}" ]
-    then
-      log "Sentry was triggered by an event."
-    fi
-    ;;
-  off)
-    log "Sentry check is disactive."
-    ;;
-  *)
-    log "Unknown TESLA_SENTRY_CHECK: ${TESLA_SENTRY_CHECK}."
-    ;;
-esac
+get_sentry_check=$(/root/bin/tesla_api.py get_sentry_check | tr '[:upper:]' '[:lower:]')
+if [ "0" = "${get_sentry_check}" ]
+then
+  log "Sentry was triggered by an event."
+fi
