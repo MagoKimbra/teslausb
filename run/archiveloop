@@ -844,7 +844,7 @@ else
   do
     slowblink
 
-    wait_for_archive_to_be_reachable
+#    wait_for_archive_to_be_reachable
 
     fastblink
 
