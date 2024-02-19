@@ -823,37 +823,54 @@ else
   connect_usb_drives_to_host
 fi
 
-while true
-do
-  slowblink
 
-  wait_for_archive_to_be_reachable
+if [[ ( -n "${TESLA_SENTRY_CHECK:-x}" ) ]]
+then
 
-  fastblink
+  # Check sentry
+  while true
+  do
+    log "Sono al controllo sentry"
 
-  set_time
+    # Check if sentry was triggered by an event.
+    /root/bin/check_sentry || true
 
-  /root/bin/awake_start || true
+    sleep 5
 
-  sleep "${ARCHIVE_DELAY:-5}"
+  done
 
-  # Check if sentry was triggered by an event.
-  /root/bin/check_sentry || true
+else
 
-  # take a snapshot before archive_clips starts deleting files
-  /root/bin/make_snapshot.sh
+  while true
+  do
+    slowblink
 
-  archive_clips
+    wait_for_archive_to_be_reachable
 
-  truncate_log
+    fastblink
 
-  /root/bin/awake_stop || true
+    set_time
 
-  doubleblink
+    /root/bin/awake_start || true
 
-  connect_usb_drives_to_host
+    sleep "${ARCHIVE_DELAY:-5}"
 
-  wait_for_archive_to_be_unreachable
+    # take a snapshot before archive_clips starts deleting files
+    /root/bin/make_snapshot.sh
 
-  check_if_usb_gadget_is_mounted
-done
+    archive_clips
+
+    truncate_log
+
+    /root/bin/awake_stop || true
+
+    doubleblink
+
+    connect_usb_drives_to_host
+
+    wait_for_archive_to_be_unreachable
+
+    check_if_usb_gadget_is_mounted
+  done
+
+fi
