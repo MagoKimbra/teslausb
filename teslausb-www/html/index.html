@@ -1614,8 +1614,8 @@ function readconfig() {
       const fb = document.querySelector("#filebrowser");
       new FileBrowser(fb, [
         ...config.has_music == "yes" ? [{ path: "fs/Music", label: "Music" }] : [],
-        ...config.has_lightshow == "yes" ? [{ path: "fs/LightShow", label: "LightShow" }] : [],
-        ...config.has_boombox == "yes" ? [{ path: "fs/Boombox", label: "Boombox" }] : []
+        ...config.has_lightshow == "yes" ? [{ path: "fs/LightShow/LightShow", label: "LightShow" }] : [],
+        ...config.has_boombox == "yes" ? [{ path: "fs/Boombox/Boombox", label: "Boombox" }] : []
       ]);
     }
   }});
